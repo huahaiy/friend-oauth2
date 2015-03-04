@@ -13,6 +13,8 @@
 (defn format-authn-uri
   "Formats the client authentication uri"
   [{{:keys [query url]} :authentication-uri} anti-forgery-token]
+  (println query)
+  (println url)
   (->> (assoc query :state anti-forgery-token)
        ring-codec/form-encode
        (str url "?")))
